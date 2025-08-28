@@ -1,16 +1,19 @@
 terraform {
+
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
       version = "=3.0.0"
     }
   }
+
   cloud { 
     organization = "xaistrying" 
     workspaces { 
       name = "workspace-xaistrying" 
     } 
   } 
+  
 }
 
 provider "azurerm" {
