@@ -69,3 +69,21 @@ sudo docker exec jenkins-blueocean cat /var/jenkins_home/secrets/initialAdminPas
 ```bash
 docker exec -it jenkins-blueocean bash
 ```
+
+## Connect Jenkins container to the host socket
+
+Since you're running the Jenkins as a container, the container can't reach docker host unix post.</br>
+In order to resolve this, we have to run another container that can mediate between docker host and jenkins container. It will public docker host's unix port as its tcp port. 
+```bash
+docker run \
+    -d --restart=always \
+    -p 127.0.0.1:2376:2375 \
+    --network jenkins \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    alpine/socat \
+    tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
+```
+To get the IP Address of the container:
+```bash
+docker inspect <NAMES> | grep IPAddress
+```
