@@ -9,7 +9,7 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                cd my-app
+                cd ./devops-project-01/my-app
                 pip install -r requirements.txt
                 '''
             }
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                cd my-app
+                cd ./devops-project-01/my-app
                 python3 script.py
                 python3 script.py --name="xaistrying"
                 '''
