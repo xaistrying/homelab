@@ -1,0 +1,6 @@
+---
+- name: Ensure required directories is created
+  ansible.builtin.file:
+    path: "{{ directories }}"
+    state: directory
+    mode: '0755'

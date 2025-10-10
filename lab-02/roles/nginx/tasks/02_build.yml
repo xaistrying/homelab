@@ -1,0 +1,13 @@
+---
+- name: Compile nginx
+  ansible.builtin.command: make
+  args:
+    chdir: "{{ nginx_src_path }}nginx-{{ nginx_version }}"
+  register: nginx_make_result
+  changed_when: false
+
+- name: Install nginx
+  ansible.builtin.command: make install
+  args:
+    chdir: "{{ nginx_src_path }}nginx-{{ nginx_version }}"
+  changed_when: nginx_make_result.rc == 0

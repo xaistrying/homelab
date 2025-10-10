@@ -1,0 +1,9 @@
+---
+- name: Download
+  ansible.builtin.import_tasks: ./roles/nginx/tasks/00_download.yml
+
+- name: Configure
+  ansible.builtin.import_tasks: ./01_configure.yml
+
+- name: Build
+  ansible.builtin.import_tasks: ./02_build.yml

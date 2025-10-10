@@ -1,0 +1,5 @@
+---
+common_directories:
+  - /zserver
+  - /data/logs
+  - /data/src

@@ -1,0 +1,14 @@
+---
+- name: Install required build packages for modules
+  ansible.builtin.apt:
+    name: "{{ nginx_essential_build_packages }}"
+    state: present
+    update_cache: true
+
+- name: Configure nginx with modules
+  ansible.builtin.command: >
+    ./configure {{ nginx_configures | join(' ') }}
+  args:
+    chdir: "{{ nginx_src_path }}nginx-{{ nginx_version }}"
+  register: nginx_configure_result
+  changed_when: "'creating Makefile' in nginx_configure_result.stdout"

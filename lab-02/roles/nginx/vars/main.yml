@@ -1,0 +1,10 @@
+---
+nginx_src_path: "/data/src/"
+
+# ============================================
+# CONFIGURATION
+# ============================================
+nginx_prefix_path: "/zserver/nginx"
+nginx_sbin_path: "/zserver/nginx/sbin/nginx"
+nginx_conf_path: "/zserver/nginx/conf/nginx.conf"
+nginx_pid_path: "/zserver/nginx/nginx.pid"

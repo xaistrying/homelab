@@ -1,0 +1,13 @@
+---
+- name: Download nginx source
+  ansible.builtin.get_url:
+    url: "{{ nginx_source_base_url }}{{ nginx_source_package }}"
+    dest: "{{ nginx_src_path }}"
+    mode: '0644'
+
+- name: Extract nginx tarball
+  ansible.builtin.unarchive:
+    src: "{{ nginx_dir }}{{ nginx_source_package }}"
+    dest: "{{ nginx_src_path }}"
+    remote_src: true
+    creates: "{{ nginx_unarchive_url }}"

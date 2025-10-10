@@ -1,0 +1,15 @@
+[Unit]
+Description=The NGINX HTTP and reverse proxy server
+After=network.targer
+
+[Service]
+Type=forking
+PIDFile={{ nginx_pid_path }}
+ExecStartPre=/zserver/nginx/sbin/nginx -t
+ExecStart=/zserver/nginx/sbin/nginx
+ExecReload=/zserver/nginx/sbin/nginx -s reload
+ExecStop=/zserver/nginx/sbin/nginx -s quit
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+---
+- name: Gateway Layer
+  hosts: servers
+  become: true
+  roles:
+    - common
+    - nginx

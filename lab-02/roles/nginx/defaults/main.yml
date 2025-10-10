@@ -1,0 +1,23 @@
+---
+# ============================================
+# INSTALLATION
+# ============================================
+nginx_version: ""
+
+# Source download URLs
+nginx_source_base_url: "http://nginx.org/download/nginx-"
+nginx_source_package: "{{ nginx_version }}.tar.gz"
+
+# ============================================
+# CONFIGURATION
+# ============================================
+nginx_configuration:
+  - "--prefix={{ nginx_prefix_path }}"
+  - "--sbin-path={{ nginx_sbin_path }}"
+  - "--conf-path={{ nginx_conf_path }}"
+  - "--pid-path={{ nginx_pid_path }}"
+  # Add more configurations here
+
+nginx_essential_build_packages:
+  - "build-essential"
+  # Add more essential build packages here
